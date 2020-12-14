@@ -38,6 +38,8 @@ contract ERC20 is Context, IERC20 {
     mapping (address => mapping (address => uint256)) private _allowances;
 
     uint256 private _totalSupply;
+    uint256 private _totalBurnt;
+    uint256 private _totalMinted;
 
     string private _name;
     string private _symbol;
@@ -95,6 +97,20 @@ contract ERC20 is Context, IERC20 {
      */
     function totalSupply() public view override returns (uint256) {
         return _totalSupply;
+    }
+
+    /**
+     * @dev See {IERC20-totalBurnt}.
+     */
+    function totalBurnt() public view override returns (uint256) {
+        return _totalBurnt;
+    }
+
+    /**
+     * @dev See {IERC20-totalMinted}.
+     */
+    function totalMinted() public view override returns (uint256) {
+        return _totalMinted;
     }
 
     /**
@@ -231,6 +247,7 @@ contract ERC20 is Context, IERC20 {
         _beforeTokenTransfer(address(0), account, amount);
 
         _totalSupply = _totalSupply.add(amount);
+        _totalMinted = _totalMinted.add(amount);
         _balances[account] = _balances[account].add(amount);
         emit Transfer(address(0), account, amount);
     }
@@ -253,6 +270,7 @@ contract ERC20 is Context, IERC20 {
 
         _balances[account] = _balances[account].sub(amount, "ERC20: burn amount exceeds balance");
         _totalSupply = _totalSupply.sub(amount);
+        _totalBurnt = _totalBurnt.add(amount);
         emit Transfer(account, address(0), amount);
     }
 
