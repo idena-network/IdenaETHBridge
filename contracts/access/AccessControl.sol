@@ -149,7 +149,7 @@ abstract contract AccessControl is Context {
      */
     function revokeRole(bytes32 role, address account) public virtual {
         require(hasRole(_roles[role].adminRole, _msgSender()), "AccessControl: sender must be an admin to revoke");
-
+        require(getRoleMemberCount(role) > 1,"AccessControl: MemberCount should be larger than 1");
         _revokeRole(role, account);
     }
 
@@ -169,7 +169,7 @@ abstract contract AccessControl is Context {
      */
     function renounceRole(bytes32 role, address account) public virtual {
         require(account == _msgSender(), "AccessControl: can only renounce roles for self");
-
+        require(getRoleMemberCount(role) > 1,"AccessControl: MemberCount should be larger than 1");
         _revokeRole(role, account);
     }
 
