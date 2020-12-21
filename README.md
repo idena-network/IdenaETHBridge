@@ -2,6 +2,7 @@
 - ability for holders to burn (destroy) their tokens
 - a minter role that allows for token minting (creation)
 - a pauser role that allows to stop all token transfers
+- an admin role that allows to administrate the contract.
 ### Transact Methods
 ##### approve(address `spender` , uint256 `amount`)
  Sets `amount` as the allowance of `spender` over the caller's tokens.
