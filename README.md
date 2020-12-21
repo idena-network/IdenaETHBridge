@@ -64,7 +64,7 @@ Unpauses all token transfers.
 Requirements:
 - the caller must have the `PAUSER_ROLE`.
 
-< < < < call > > > > 
+### Calls
 ##### getRoleAdmin(byte32 `role`)
 Returns the admin role that controls `role`. See {grantRole} and {revokeRole}.
 ##### getRoleMember(byte32 `role`, uint256 `index`)
