@@ -32,7 +32,7 @@ contract WrappedIdena is Context, AccessControl, ERC20Burnable, ERC20Pausable {
      *
      * See {ERC20-constructor}.
      */
-    constructor() public ERC20("Wrapped Idena", "wiDNA") {
+    constructor() public ERC20("Wrapped Idena", "iDNA") {
         _setupRole(DEFAULT_ADMIN_ROLE, _msgSender());
         _setupRole(MINTER_ROLE, _msgSender());
         _setupRole(PAUSER_ROLE, _msgSender());
